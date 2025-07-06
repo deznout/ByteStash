@@ -47,13 +47,6 @@ app.use(`${basePath}/api/v1/snippets`, apiSnippetRoutes);
 
 app.use(`${basePath}/manifest.json`, express.static(join(buildPath, 'manifest.json')));
 
-app.get('/', (req, res, next) => {
-  if (basePath) {
-    return res.redirect(basePath);
-  }
-  next();
-});
-
 app.use(`${basePath}/assets`, express.static(assetsPath));
 app.use(`${basePath}/monacoeditorwork`, express.static(join(buildPath, 'monacoeditorwork')));
 app.use(basePath, express.static(buildPath, { index: false }));
